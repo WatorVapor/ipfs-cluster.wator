@@ -30,5 +30,8 @@
 *.exe
 *.out
 *.app
+
+
 go-ipfs*
 storage-ipfs/*
+node_modules/
