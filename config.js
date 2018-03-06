@@ -61,3 +61,21 @@ ipfs.config.set('API.HTTPHeaders.Access-Control-Allow-Headers',api_heads,(err, r
   console.log('set::API.HTTPHeaders.Access-Control-Allow-Headers reply=<',reply,'')
 })
 
+
+
+
+ipfs.config.set('Swarm.ConnMgr.HighWater',90,(err, reply) => {
+  if (err) {
+    throw err
+  }
+  console.log('set::Swarm.ConnMgr.HighWater reply=<',reply,'')
+})
+
+ipfs.config.set('Swarm.ConnMgr.LowWater'60,(err, reply) => {
+  if (err) {
+    throw err
+  }
+  console.log('set::Swarm.ConnMgr.LowWater reply=<',reply,'')
+})
+
+
