@@ -71,7 +71,7 @@ ipfs.config.set('Swarm.ConnMgr.HighWater',90,(err, reply) => {
   console.log('set::Swarm.ConnMgr.HighWater reply=<',reply,'')
 })
 
-ipfs.config.set('Swarm.ConnMgr.LowWater'60,(err, reply) => {
+ipfs.config.set('Swarm.ConnMgr.LowWater',60,(err, reply) => {
   if (err) {
     throw err
   }
