@@ -2,9 +2,9 @@ const WebSocket = require('ws');
 const config = {port: 19083 }
 const wss = new WebSocket.Server(config);
 wss.on('connection', function connection(ws) {
-  console.log('connection: ws=<', ws,'>');
+  //console.log('connection: ws=<', ws,'>');
   ws.on('message', function (msg) {
-    console.log('message: ws=<', ws,'>');
+    //console.log('message: ws=<', ws,'>');
     try {
       let jsonMsg = JSON.parse(msg);
       //console.log('message: jsonMsg=<', jsonMsg,'>');
@@ -53,7 +53,9 @@ function addFiles2IpfsStorage(files) {
 }
 
 function sendBack2WS(result) {
+  console.log('sendBack2WS::wss.clients=<',wss.clients,'>');
   wss.clients.forEach(function each(client) {
+    console.log('sendBack2WS::client.readyState=<',client.readyState,'>');
     if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify(result));
     };
