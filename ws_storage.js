@@ -28,18 +28,6 @@ wss.on('connection', function connection(ws) {
   });
 });
 
-/*
-function base64ToBuffer(base64) {
-  let binstr = atob(base64);
-  let buf = new Uint8Array(binstr.length);
-  Array.prototype.forEach.call(binstr, function (ch, i) {
-    buf[i] = ch.charCodeAt(0);
-  });
-  return buf;
-}
-*/
-
-
 var ipfsAPI = require('ipfs-api');
 var ipfs = ipfsAPI('/ip4/127.0.0.1/tcp/5001');
 console.log('ipfs=<',ipfs,'>');
