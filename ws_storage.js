@@ -66,7 +66,7 @@ function addFiles2IpfsStorage(files) {
 
 function sendBack2WS(result) {
   wss.clients.forEach(function each(client) {
-    if (client !== ws && client.readyState === WebSocket.OPEN) {
+    if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify(result));
     };
   });
