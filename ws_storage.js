@@ -3,18 +3,19 @@ const config = {port: 19083 }
 const wss = new WebSocket.Server(config);
 wss.on('connection', function connection(ws) {
   ws.on('message', function (msg) {
+    console.log('message: ws=<', ws,'>');
     try {
       let jsonMsg = JSON.parse(msg);
-      console.log('message: jsonMsg=<', jsonMsg,'>');
+      //console.log('message: jsonMsg=<', jsonMsg,'>');
       let files = [];
       jsonMsg.forEach(function(val, i) {
-        console.log('message: val=<', val,'>');
+        //console.log('message: val=<', val,'>');
         let file = {};
         file.path = val.path;
         file.content = Buffer.from(val.content, 'base64');
         files.push(file);
       });
-      console.log('message: files=<', files,'>');
+      //console.log('message: files=<', files,'>');
       addFiles2IpfsStorage(files);
     } catch(e) {
       console.log('message: e=<', e,'>');
