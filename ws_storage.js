@@ -56,7 +56,7 @@ function sendBack2WS(result) {
   console.log('sendBack2WS::wss.clients=<',wss.clients,'>');
   wss.clients.forEach(function each(client) {
     console.log('sendBack2WS::client.readyState=<',client.readyState,'>');
-    if (client.readyState === WebSocket.OPEN) {
+    if (client.readyState) {
       client.send(JSON.stringify(result));
     };
   });
