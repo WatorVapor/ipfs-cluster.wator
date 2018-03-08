@@ -2,6 +2,7 @@ const WebSocket = require('ws');
 const config = {port: 19083 }
 const wss = new WebSocket.Server(config);
 wss.on('connection', function connection(ws) {
+  
   //console.log('connection: ws=<', ws,'>');
   ws.on('message', function (msg) {
     //console.log('message: ws=<', ws,'>');
@@ -23,10 +24,33 @@ wss.on('connection', function connection(ws) {
       console.log('message: msg=<', msg,'>');
     }
   });
+  
   ws.on('error', function (evt) {
     console.log('error: evt=<', evt,'>');
   });
+
+  ws.isAlive = true;
+  ws.on('pong', heartbeat);
 });
+
+
+function noop() {}
+function heartbeat() {
+  this.isAlive = true;
+}
+
+const interval = setInterval(function ping() {
+  wss.clients.forEach(function each(ws) {
+    if (ws.isAlive === false) {
+      return ws.terminate();
+    }
+    ws.isAlive = false;
+    ws.ping(noop);
+  });
+}, 10000);
+
+
+
 
 var ipfsAPI = require('ipfs-api');
 var ipfs = ipfsAPI('/ip4/127.0.0.1/tcp/5001');
