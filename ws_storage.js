@@ -66,18 +66,21 @@ ipfs.id(function (err, identity) {
 
 function addFiles2IpfsStorage(files) {
   console.log('uploadSliceToIpfs::files=<',files,'>');
-  ipfs.files.add(files,function(err, result){
-    if (err) {
+  if(files) {
+    ipfs.files.add(files,function(err, result){
+      if (err) {
+        throw err;
+      }
+      console.log('uploadSliceToIpfs::result=<',result,'>');
       setTimeout(function () { 
-        sendBack2WS([]);
+        sendBack2WS(result);
       },1);
-      throw err;
-    }
-    console.log('uploadSliceToIpfs::result=<',result,'>');
+    });
+  } else {
     setTimeout(function () { 
-      sendBack2WS(result);
+      sendBack2WS([]);
     },1);
-  });
+  }
 }
 
 function sendBack2WS(result) {
