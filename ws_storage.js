@@ -68,6 +68,9 @@ function addFiles2IpfsStorage(files) {
   console.log('uploadSliceToIpfs::files=<',files,'>');
   ipfs.files.add(files,function(err, result){
     if (err) {
+      setTimeout(function () { 
+        sendBack2WS([]);
+      },1);
       throw err;
     }
     console.log('uploadSliceToIpfs::result=<',result,'>');
