@@ -66,7 +66,7 @@ ipfs.id(function (err, identity) {
 
 function addFiles2IpfsStorage(files) {
   console.log('uploadSliceToIpfs::files=<',files,'>');
-  if(files) {
+  if(files && files.length > 0) {
     ipfs.files.add(files,function(err, result){
       if (err) {
         throw err;
