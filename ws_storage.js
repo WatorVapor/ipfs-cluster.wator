@@ -137,6 +137,7 @@ function getFiles4IpfsStorage(file,ws) {
         throw err;
         process.exit();
       }
+      console.log('getFiles4IpfsStorage::result utf8=<',result.toString('utf8'),'>');
       console.log('getFiles4IpfsStorage::result=<',result,'>');
       setTimeout(function () { 
         sendBackFile2WS(result,file,ws);
