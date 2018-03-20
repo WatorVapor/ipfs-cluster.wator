@@ -113,21 +113,12 @@ function sendBack2WS(result,ws) {
 function getFiles4IpfsStorage(file,ws) {
   console.log('getFiles4IpfsStorage::file=<',file,'>');
   if(file) {
-    ipfs.files.get(file,function(err, files){
+    ipfs.files.cat(file,function(err, result){
       if (err) {
         throw err;
         process.exit();
       }
-      console.log('getFiles4IpfsStorage::files=<',files,'>');
-      if(files.length > 0) {
-        setTimeout(function () { 
-          sendBackFile2WS(files[0].content,file,ws);
-        },1);
-      } else {
-        setTimeout(function () { 
-          sendBackFile2WS({},file,ws);
-        },1);
-      }
+      getFiles4IpfsStorage2(file,ws);
     });
   } else {
     setTimeout(function () { 
@@ -135,6 +126,28 @@ function getFiles4IpfsStorage(file,ws) {
     },1);
   }
 }
+
+function getFiles4IpfsStorage2(file,ws) {
+  console.log('getFiles4IpfsStorage::file=<',file,'>');
+  if(file) {
+    ipfs.files.cat(file,function(err, result){
+      if (err) {
+        throw err;
+        process.exit();
+      }
+      console.log('getFiles4IpfsStorage::result=<',result,'>');
+      setTimeout(function () { 
+        sendBackFile2WS(result,file,ws);
+      },1);
+    });
+  } else {
+    setTimeout(function () { 
+      sendBackFile2WS({},file,ws);
+    },1);
+  }
+}
+
+
 
 function sendBackFile2WS(result,file,ws) {
   if (ws.readyState) {
