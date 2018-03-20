@@ -119,18 +119,19 @@ function getFiles4IpfsStorage(file,ws) {
       }
       console.log('getFiles4IpfsStorage::result=<',result,'>');
       setTimeout(function () { 
-        sendBackFile2WS(result,ws);
+        sendBackFile2WS(result,file,ws);
       },1);
     });
   } else {
     setTimeout(function () { 
-      sendBackFile2WS({},ws);
+      sendBackFile2WS({},file,ws);
     },1);
   }
 }
 
-function sendBackFile2WS(result,ws) {
+function sendBackFile2WS(result,file,ws) {
   if (ws.readyState) {
-    ws.send(JSON.stringify(result));
+    let res = { clip:file,result:result};
+    ws.send(JSON.stringify(res));
   };
 }
