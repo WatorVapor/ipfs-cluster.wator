@@ -113,14 +113,14 @@ function sendBack2WS(result,ws) {
 function getFiles4IpfsStorage(file,ws) {
   console.log('getFiles4IpfsStorage::file=<',file,'>');
   if(file) {
-    ipfs.files.cat(file,function(err, result){
+    ipfs.files.get(file,function(err, files){
       if (err) {
         throw err;
         process.exit();
       }
-      console.log('getFiles4IpfsStorage::result=<',result,'>');
+      console.log('getFiles4IpfsStorage::files=<',files,'>');
       setTimeout(function () { 
-        sendBackFile2WS(result,file,ws);
+        sendBackFile2WS(files,file,ws);
       },1);
     });
   } else {
