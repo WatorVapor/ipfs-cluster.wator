@@ -61,7 +61,8 @@ const interval = setInterval(function ping() {
 
 
 var ipfsAPI = require('ipfs-api');
-var ipfs = ipfsAPI('/ip4/127.0.0.1/tcp/5001');
+//var ipfs = ipfsAPI('/ip4/127.0.0.1/tcp/5001');
+var ipfs = ipfsAPI('localhost', '5001', {protocol: 'http'})
 console.log('ipfs=<',ipfs,'>');
 
 ipfs.id(function (err, identity) {
