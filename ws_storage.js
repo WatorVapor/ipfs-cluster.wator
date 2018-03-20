@@ -8,7 +8,7 @@ wss.on('connection', function connection(ws) {
     //console.log('message: ws=<', ws,'>');
     try {
       let jsonMsg = JSON.parse(msg);
-      //console.log('message: jsonMsg=<', jsonMsg,'>');
+      console.log('message: jsonMsg=<', jsonMsg,'>');
       if(jsonMsg.train && jsonMsg.train.upload) {
         let files = [];
         jsonMsg.train.upload.forEach(function(val, i) {
@@ -21,6 +21,7 @@ wss.on('connection', function connection(ws) {
         //console.log('message: files=<', files,'>');
         addFiles2IpfsStorage(files);
       }
+      
     } catch(e) {
       console.log('message: e=<', e,'>');
       console.log('message: msg=<', msg,'>');
