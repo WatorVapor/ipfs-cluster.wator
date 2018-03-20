@@ -119,9 +119,15 @@ function getFiles4IpfsStorage(file,ws) {
         process.exit();
       }
       console.log('getFiles4IpfsStorage::files=<',files,'>');
-      setTimeout(function () { 
-        sendBackFile2WS(files,file,ws);
-      },1);
+      if(files.length > 0) {
+        setTimeout(function () { 
+          sendBackFile2WS(files[0].content,file,ws);
+        },1);
+      } else {
+        setTimeout(function () { 
+          sendBackFile2WS({},file,ws);
+        },1);
+      }
     });
   } else {
     setTimeout(function () { 
