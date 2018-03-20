@@ -109,7 +109,7 @@ function sendBack2WS(result,ws) {
   };
 }
 
-
+/*
 function getFiles4IpfsStorage(file,ws) {
   console.log('getFiles4IpfsStorage::file=<',file,'>');
   if(file) {
@@ -126,8 +126,10 @@ function getFiles4IpfsStorage(file,ws) {
     },1);
   }
 }
+*/
 
-function getFiles4IpfsStorage2(file,ws) {
+
+function getFiles4IpfsStorage(file,ws) {
   console.log('getFiles4IpfsStorage::file=<',file,'>');
   if(file) {
     ipfs.files.cat(file,function(err, result){
