@@ -21,8 +21,8 @@ wss.on('connection', function connection(ws) {
         //console.log('message: files=<', files,'>');
         addFiles2IpfsStorage(files,ws);
       }
-      if(jsonMsg.tts && jsonMsg.tts.down) {
-        let file = jsonMsg.tts.down;
+      if(jsonMsg.tts && jsonMsg.tts.download) {
+        let file = jsonMsg.tts.download;
         console.log('message: file=<', file,'>');
         getFiles4IpfsStorage(file,ws);
       }
