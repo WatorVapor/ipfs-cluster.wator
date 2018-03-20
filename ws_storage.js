@@ -59,6 +59,7 @@ console.log('ipfs=<',ipfs,'>');
 ipfs.id(function (err, identity) {
   if (err) {
     throw err;
+    process.exit();
   }
   console.log('identity=<',identity,'>');
 });
@@ -70,6 +71,7 @@ function addFiles2IpfsStorage(files) {
     ipfs.files.add(files,function(err, result){
       if (err) {
         throw err;
+        process.exit();
       }
       console.log('uploadSliceToIpfs::result=<',result,'>');
       setTimeout(function () { 
