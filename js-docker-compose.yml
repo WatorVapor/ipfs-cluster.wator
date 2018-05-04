@@ -1,16 +1,11 @@
 version: '3'
 services:
-  ipfs-dameon:
-    image: golang
+  ipfs-dameon-js:
+    image: ipfs/js-ipfs
     volumes:
-      - ./go-ipfs:/ipfs
-      - ./storage-ipfs:/storage
-      - ./conf-ipfs:/conf
+      - ./js-storage-ipfs:/root/.jsipfs
     networks:
       - outside
-    environment:
-      - PATH=/ipfs:$PATH
-      - IPFS_PATH=/storage
     deploy:
       resources:
         limits:
@@ -19,7 +14,6 @@ services:
         reservations:
           cpus: '1.00'
           memory: 512M
-    command: ipfs daemon --enable-pubsub-experiment
   ipfs-nginx:
     image: nginx
     networks:
