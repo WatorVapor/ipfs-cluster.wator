@@ -28,7 +28,6 @@ services:
       - /watorvapor/cert:/etc/cert
       - ./conf-nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./conf-nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./conf-nginx/tcp.conf.d:/etc/nginx/tcp.conf.d:ro
     deploy:
       resources:
         limits:
