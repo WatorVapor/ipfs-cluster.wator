@@ -30,6 +30,18 @@ services:
         reservations:
           cpus: '0.2'
           memory: 16M
+  ipfs-relay-redis:
+    image: redis
+    networks:
+      - outside
+    deploy:
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 32M
+        reservations:
+          cpus: '0.2'
+          memory: 16M
   ipfs-ws-storage:
     image: node:slim
     networks:
