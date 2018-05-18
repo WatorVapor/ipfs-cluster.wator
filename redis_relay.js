@@ -3,7 +3,7 @@ const ipfsAPI = require('ipfs-api');
 const ipfs = ipfsAPI('localhost', '5002', {protocol: 'http'})
 console.log('ipfs=<',ipfs,'>');
 
-ipfs.id(function (err, identity) {
+ipfs.id( (err, identity) => {
   if (err) {
     throw err;
     process.exit();
@@ -13,7 +13,16 @@ ipfs.id(function (err, identity) {
 
 
 const redis = require("redis");
-  
+let pub = redis.createClient();
+let sub = redis.createClient();
+
+pub.on("ready", (err) => {
+  console.log('pub err=<',err,'>');
+});
+sub.on("ready", (err) => {
+  console.log('sub err=<',err,'>');
+});
+
 
 
 /*
