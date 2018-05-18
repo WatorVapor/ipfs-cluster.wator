@@ -11,6 +11,12 @@ ipfs.id(function (err, identity) {
   console.log('identity=<',identity,'>');
 });
 
+
+const redis = require("redis");
+  
+
+
+/*
 const topic = 'fruit-of-the-day';
 
 
@@ -34,4 +40,5 @@ setTimeout(function(){
     console.log('sented msg=<',msg,'>');
   });
 },1000);
+*/
 
