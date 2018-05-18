@@ -735,6 +735,7 @@
       "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.4.tgz",
       "version": "2.3.4"
     },
+    "redis": "^2.8.0",
     "ripemd160": {
       "integrity": "sha1-D0WEKVxTo2KK9+bXmsohzlfRxuc=",
       "requires": {
