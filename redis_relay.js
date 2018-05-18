@@ -11,3 +11,27 @@ ipfs.id(function (err, identity) {
   console.log('identity=<',identity,'>');
 });
 
+const topic = 'fruit-of-the-day';
+
+
+const receiveMsg = (msg) => {
+  console.log('receiveMsg msg=<',msg,'>');
+  console.trace();
+}
+ipfs.pubsub.subscribe(topic, receiveMsg,(err) => {
+  if (err) {
+    throw err
+  }
+  console.log('subscribe topic=<',topic,'>');
+});
+
+setTimeout(function(){
+  const msg = new Buffer('banana');
+  ipfs.pubsub.publish(topic, msg, (err) => {
+    if (err) {
+      throw err;
+    }
+    console.log('sented msg=<',msg,'>');
+  });
+},1000);
+
