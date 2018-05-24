@@ -38,7 +38,11 @@ ipfs.files.get(taskTopBlocks,(err,files) => {
     //console.log(file.path)
     //console.log(file.content.toString('utf8'));
     let blockJson = JSON.parse(file.content.toString('utf8'));
-    console.log('receiveMsg blockJson=<',blockJson,'>');
+    broadCastBlocks(blockJson);
   })
 })
+
+function broadCastBlocks(block) {
+  console.log('broadCastBlocks block=<',block,'>');
+}
 
