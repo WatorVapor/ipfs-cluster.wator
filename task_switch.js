@@ -28,14 +28,17 @@ ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
 
 const broadcastTopic = 'wai-ipfs-task-switch-created';
 
+// cnwiki blocks
 const taskTopBlocks = 'QmXbWfmEm7z43rdXyMp3XdT8yKViLgJvkwEmLCv3iWS1zP';
 ipfs.files.get(taskTopBlocks,(err,files) => {
   if (err) {
-    throw err
+    throw err;
   }
   files.forEach((file) => {
-    console.log(file.path)
-    console.log(file.content.toString('utf8'))
+    //console.log(file.path)
+    //console.log(file.content.toString('utf8'));
+    let blockJson = JSON.parse(file.content.toString('utf8'));
+    console.log('receiveMsg blockJson=<',blockJson,'>');
   })
 })
 
