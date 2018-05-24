@@ -34,7 +34,7 @@ const broadcastTopic = 'wai-ipfs-task-switch-finnished';
 const receiveMsg = (msg) => {
   console.log('receiveMsg msg=<',msg,'>');
   //console.trace();
-  pubRedis.publish(msg);
+  pubRedis.publish(msg.toString('utf8'));
 }
 ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
   if (err) {
