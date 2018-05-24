@@ -28,21 +28,34 @@ ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
 
 const broadcastTopic = 'wai-ipfs-task-switch-created';
 
-// cnwiki blocks
-const taskTopBlocks = 'QmXbWfmEm7z43rdXyMp3XdT8yKViLgJvkwEmLCv3iWS1zP';
-ipfs.files.get(taskTopBlocks,(err,files) => {
-  if (err) {
-    throw err;
-  }
-  files.forEach((file) => {
-    //console.log(file.path)
-    //console.log(file.content.toString('utf8'));
-    let blockJson = JSON.parse(file.content.toString('utf8'));
-    broadCastBlocks(blockJson);
-  })
-})
 
 function broadCastBlocks(block) {
   console.log('broadCastBlocks block=<',block,'>');
+  if(block.prev){
+    if(block.prev.startsWith('Qm')) {
+      getOneBlock(block.prev);
+    } else {
+      let genisis = block.prev;
+      console.log('broadCastBlocks genisis=<',genisis,'>');
+    }
+  }
 }
 
+function getOneBlock(block) {
+  ipfs.files.get(taskTopBlocks,(err,files) => {
+    if (err) {
+      throw err;
+    }
+    files.forEach((file) => {
+      //console.log(file.path)
+      //console.log(file.content.toString('utf8'));
+      let blockJson = JSON.parse(file.content.toString('utf8'));
+      broadCastBlocks(blockJson);
+    })
+  })
+}
+
+// cnwiki blocks
+const taskTopBlocks = 'QmXbWfmEm7z43rdXyMp3XdT8yKViLgJvkwEmLCv3iWS1zP';
+
+getOneBlock(taskTopBlocks);
