@@ -14,14 +14,14 @@ ipfs.id( (err, identity) => {
 
 
 const redis = require("redis");
-let pub = redis.createClient();
-let sub = redis.createClient();
+let pubRedis = redis.createClient();
+let subRedis = redis.createClient();
 
-pub.on("ready", (err) => {
-  console.log('pub err=<',err,'>');
+pubRedis.on("ready", (err) => {
+  console.log('pubRedis err=<',err,'>');
 });
-sub.on("ready", (err) => {
-  console.log('sub err=<',err,'>');
+subRedis.on("ready", (err) => {
+  console.log('subRedis err=<',err,'>');
 });
 
 
@@ -34,6 +34,7 @@ const broadcastTopic = 'wai-ipfs-task-switch-finnished';
 const receiveMsg = (msg) => {
   console.log('receiveMsg msg=<',msg,'>');
   //console.trace();
+  pubRedis.publish(msg);
 }
 ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
   if (err) {
