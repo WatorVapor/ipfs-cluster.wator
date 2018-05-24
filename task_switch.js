@@ -32,6 +32,16 @@ const broadcastTopic = 'wai-ipfs-task-switch-created';
 function broadCastBlocks(block,id) {
   //console.log('broadCastBlocks block=<',block,'>');
   console.log('broadCastBlocks id=<',id,'>');
+  let broadcastTask = {block:id,task:''};
+  const msg = new Buffer(JSON.stringify(broadcastTask));
+  ipfs.pubsub.publish(broadcastTopic, msg, (err) => {
+    if (err) {
+      throw err;
+    }
+    console.log('sented msg=<',msg,'>');
+  });
+  
+  /*
   if(block.prev){
     if(block.prev.startsWith('Qm')) {
       getOneBlock(block.prev);
@@ -40,6 +50,7 @@ function broadCastBlocks(block,id) {
       console.log('broadCastBlocks genisis=<',genisis,'>');
     }
   }
+  */
 }
 
 function getOneBlock(block) {
