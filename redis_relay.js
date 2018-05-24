@@ -29,12 +29,14 @@ subRedis.on("ready", (err) => {
 const watchTopic = 'wai-ipfs-task-switch-created';
 const broadcastTopic = 'wai-ipfs-task-switch-finnished';
 
+const redisPubChannel = 'wai.relay.ipfs.to.redis';
+
 
 
 const receiveMsg = (msg) => {
   console.log('receiveMsg msg=<',msg,'>');
   //console.trace();
-  pubRedis.publish(watchTopic,msg.toString('utf8'));
+  pubRedis.publish(redisPubChannel,msg.toString('utf8'));
 }
 ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
   if (err) {
