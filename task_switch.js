@@ -29,8 +29,9 @@ ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
 const broadcastTopic = 'wai-ipfs-task-switch-created';
 
 
-function broadCastBlocks(block) {
-  console.log('broadCastBlocks block=<',block,'>');
+function broadCastBlocks(block,id) {
+  //console.log('broadCastBlocks block=<',block,'>');
+  console.log('broadCastBlocks id=<',id,'>');
   if(block.prev){
     if(block.prev.startsWith('Qm')) {
       getOneBlock(block.prev);
@@ -50,7 +51,7 @@ function getOneBlock(block) {
       //console.log(file.path)
       //console.log(file.content.toString('utf8'));
       let blockJson = JSON.parse(file.content.toString('utf8'));
-      broadCastBlocks(blockJson);
+      broadCastBlocks(blockJson,file.path);
     })
   })
 }
