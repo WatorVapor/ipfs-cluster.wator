@@ -36,8 +36,8 @@ const broadcastIpfsTopic = 'wai-ipfs-task-switch-finnished';
 const onRcvRedisMsg = (msg) => {
   console.log('onRcvRedisMsg msg=<',msg,'>');
   //console.trace();
-  const msg = Buffer.from(msg);
-  ipfs.pubsub.publish(broadcastIpfsTopic,msg);
+  const msgBuff = Buffer.from(msg);
+  ipfs.pubsub.publish(broadcastIpfsTopic,msgBuff);
 }
 
 subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
