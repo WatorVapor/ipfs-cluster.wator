@@ -39,7 +39,7 @@ ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
   if (err) {
     throw err
   }
-  console.log('subscribe topic=<',topic,'>');
+  console.log('subscribe watchTopic=<',watchTopic,'>');
 });
 
 
