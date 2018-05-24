@@ -52,7 +52,7 @@ subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
 const onRcvIpfsMsg = (msg) => {
   console.log('onRcvIpfsMsg msg=<',msg,'>');
   //console.trace();
-  pubRedis.publish(redisPubChannel,msg.toString('utf8'));
+  pubRedis.publish(redisPubChannel,msg.data.toString('utf8'));
 }
 ipfs.pubsub.subscribe(watchIpfsTopic, onRcvIpfsMsg,(err) => {
   if (err) {
