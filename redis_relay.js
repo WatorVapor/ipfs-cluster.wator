@@ -32,7 +32,7 @@ const topic = 'fruit-of-the-day';
 
 const receiveMsg = (msg) => {
   console.log('receiveMsg msg=<',msg,'>');
-  console.trace();
+  //console.trace();
 }
 ipfs.pubsub.subscribe(topic, receiveMsg,(err) => {
   if (err) {
