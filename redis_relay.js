@@ -26,29 +26,20 @@ sub.on("ready", (err) => {
 
 
 
+const watchTopic = 'wai-ipfs-task-switch-created';
+const broadcastTopic = 'wai-ipfs-task-switch-finnished';
 
-const topic = 'fruit-of-the-day';
 
 
 const receiveMsg = (msg) => {
   console.log('receiveMsg msg=<',msg,'>');
   //console.trace();
 }
-ipfs.pubsub.subscribe(topic, receiveMsg,(err) => {
+ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
   if (err) {
     throw err
   }
   console.log('subscribe topic=<',topic,'>');
 });
-
-setTimeout(function(){
-  const msg = new Buffer('banana');
-  ipfs.pubsub.publish(topic, msg, (err) => {
-    if (err) {
-      throw err;
-    }
-    console.log('sented msg=<',msg,'>');
-  });
-},1000);
 
 
