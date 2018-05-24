@@ -43,7 +43,7 @@ function broadCastBlocks(block,id) {
 }
 
 function getOneBlock(block) {
-  ipfs.files.get(taskTopBlocks,(err,files) => {
+  ipfs.files.get(block,(err,files) => {
     if (err) {
       throw err;
     }
