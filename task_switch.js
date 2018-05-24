@@ -33,12 +33,14 @@ function broadCastBlocks(block,id) {
   //console.log('broadCastBlocks block=<',block,'>');
   console.log('broadCastBlocks id=<',id,'>');
   let broadcastTask = {block:id,task:''};
-  const msg = new Buffer(JSON.stringify(broadcastTask));
-  ipfs.pubsub.publish(broadcastTopic, msg, (err) => {
+  let taskStr = JSON.stringify(broadcastTask);
+  console.log('broadCastBlocks taskStr=<',taskStr,'>');
+  const msgBuff = Buffer.from(taskStr);
+  ipfs.pubsub.publish(broadcastTopic, msgBuff, (err) => {
     if (err) {
       throw err;
     }
-    console.log('sented msg=<',msg,'>');
+    console.log('sented msgBuff=<',msgBuff,'>');
   });
   
   /*
