@@ -27,3 +27,15 @@ ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
 });
 
 const broadcastTopic = 'wai-ipfs-task-switch-created';
+
+const taskTopBlocks = 'QmXbWfmEm7z43rdXyMp3XdT8yKViLgJvkwEmLCv3iWS1zP';
+ipfs.files.get(taskTopBlocks,(err,files) => {
+  if (err) {
+    throw err
+  }
+  files.forEach((file) => {
+    console.log(file.path)
+    console.log(file.content.toString('utf8'))
+  })
+})
+
