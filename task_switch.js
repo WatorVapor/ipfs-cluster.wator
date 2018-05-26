@@ -32,7 +32,7 @@ const broadcastTopic = 'wai-ipfs-task-switch-created';
 function broadCastBlocks(block,id) {
   //console.log('broadCastBlocks block=<',block,'>');
   console.log('broadCastBlocks id=<',id,'>');
-  let broadcastTask = {block:id,task:''};
+  let broadcastTask = {block:id,task:'wator.ipfs.ostrich.app'};
   let taskStr = JSON.stringify(broadcastTask);
   console.log('broadCastBlocks taskStr=<',taskStr,'>');
   const msgBuff = Buffer.from(taskStr);
