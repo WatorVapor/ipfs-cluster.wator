@@ -39,15 +39,15 @@ const onRcvRedisMsg = (msg) => {
 }
 
 subRedis.on("ready", (err) => {
-  console.log('subRedis err=<',err,'>');
-  if(!err) {
-    subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
-      if (err) {
-        throw err
-      }
-      console.log('subscribe redisSubChannel=<',redisSubChannel,'>');
-    });
+  if (err) {
+    throw err
   }
+  subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
+    if (err) {
+      throw err
+    }
+    console.log('subscribe redisSubChannel=<',redisSubChannel,'>');
+  });
 });
 
 
