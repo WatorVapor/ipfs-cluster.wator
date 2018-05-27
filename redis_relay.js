@@ -28,7 +28,7 @@ subRedis.on("ready", (err) => {
 
 
 const redisPubChannel = 'wai.relay.ipfs.to.redis';
-const redisSubChannel = '"wai.relay.redis.to.ipfs';
+const redisSubChannel = 'wai.relay.redis.to.ipfs';
 const watchIpfsTopic = 'wai-ipfs-task-switch-created';
 const broadcastIpfsTopic = 'wai-ipfs-task-switch-finnished';
 
