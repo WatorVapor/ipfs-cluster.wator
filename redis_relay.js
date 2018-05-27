@@ -20,9 +20,6 @@ let subRedis = redis.createClient();
 pubRedis.on("ready", (err) => {
   console.log('pubRedis err=<',err,'>');
 });
-subRedis.on("ready", (err) => {
-  console.log('subRedis err=<',err,'>');
-});
 
 
 
@@ -40,12 +37,16 @@ const onRcvRedisMsg = (msg) => {
   ipfs.pubsub.publish(broadcastIpfsTopic,msgBuff);
 }
 
-subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
-  if (err) {
-    throw err
-  }
-  console.log('subscribe redisSubChannel=<',redisSubChannel,'>');
+subRedis.on("ready", (err) => {
+  console.log('subRedis err=<',err,'>');
+  subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
+    if (err) {
+      throw err
+    }
+    console.log('subscribe redisSubChannel=<',redisSubChannel,'>');
+  });
 });
+
 
 
 
