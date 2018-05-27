@@ -26,8 +26,9 @@ pubRedis.on("ready", (err) => {
 
 const redisPubChannel = 'wai.relay.ipfs.to.redis';
 const redisSubChannel = 'wai.relay.redis.to.ipfs';
-const watchIpfsTopic = 'wai-ipfs-task-switch-created';
-const broadcastIpfsTopic = 'wai-ipfs-task-switch-finnished';
+
+const ipfsSubTopic = 'wai-ipfs-task-switch-created';
+const ipfsPubTopic = 'wai-ipfs-task-switch-finnished';
 
 
 const onRcvRedisMsg = (msg) => {
@@ -39,12 +40,14 @@ const onRcvRedisMsg = (msg) => {
 
 subRedis.on("ready", (err) => {
   console.log('subRedis err=<',err,'>');
-  subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
-    if (err) {
-      throw err
-    }
-    console.log('subscribe redisSubChannel=<',redisSubChannel,'>');
-  });
+  if(!err) {
+    subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
+      if (err) {
+        throw err
+      }
+      console.log('subscribe redisSubChannel=<',redisSubChannel,'>');
+    });
+  }
 });
 
 
@@ -55,11 +58,11 @@ const onRcvIpfsMsg = (msg) => {
   //console.trace();
   pubRedis.publish(redisPubChannel,msg.data.toString('utf8'));
 }
-ipfs.pubsub.subscribe(watchIpfsTopic, onRcvIpfsMsg,(err) => {
+ipfs.pubsub.subscribe(ipfsSubTopic, onRcvIpfsMsg,(err) => {
   if (err) {
     throw err
   }
-  console.log('subscribe watchIpfsTopic=<',watchIpfsTopic,'>');
+  console.log('subscribe ipfsSubTopic=<',ipfsSubTopic,'>');
 });
 
 
