@@ -14,22 +14,12 @@ ipfs.id( (err, identity) => {
 
 
 const redis = require("redis");
-let pubRedis = redis.createClient();
 let subRedis = redis.createClient();
 
-pubRedis.on("ready", (err) => {
-  console.log('pubRedis err=<',err,'>');
-});
-subRedis.on("ready", (err) => {
-  console.log('subRedis err=<',err,'>');
-});
 
 
 
-
-const redisPubChannel = 'wai.relay.ipfs.to.redis';
 const redisSubChannel = 'wai.relay.redis.to.ipfs';
-const watchIpfsTopic = 'wai-ipfs-task-switch-created';
 const broadcastIpfsTopic = 'wai-ipfs-task-switch-finnished';
 
 
@@ -40,25 +30,14 @@ const onRcvRedisMsg = (msg) => {
   ipfs.pubsub.publish(broadcastIpfsTopic,msgBuff);
 }
 
-subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
-  if (err) {
-    throw err
-  }
-  console.log('subscribe redisSubChannel=<',redisSubChannel,'>');
+
+subRedis.on("ready", (err) => {
+  console.log('subRedis err=<',err,'>');
+  subRedis.subscribe(redisSubChannel, onRcvRedisMsg,(err) => {
+    if (err) {
+      throw err
+    }
+    console.log('subscribe redisSubChannel=<',redisSubChannel,'>');
+  });
 });
-
-
-
-const onRcvIpfsMsg = (msg) => {
-  console.log('onRcvIpfsMsg msg=<',msg,'>');
-  //console.trace();
-  pubRedis.publish(redisPubChannel,msg.data.toString('utf8'));
-}
-ipfs.pubsub.subscribe(watchIpfsTopic, onRcvIpfsMsg,(err) => {
-  if (err) {
-    throw err
-  }
-  console.log('subscribe watchIpfsTopic=<',watchIpfsTopic,'>');
-});
-
 
