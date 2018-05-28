@@ -41,7 +41,8 @@ subRedis.on("message", function(channel, msg) {
     if(jsonMsg.word) {
       collectWords(jsonMsg.word);
     } else {
-      console.log('subRedis.on jsonMsg=<',jsonMsg,'>');
+      //console.log('subRedis.on jsonMsg=<',jsonMsg,'>');
+      finnishOneResourceBlock(jsonMsg);
     }
   }
   /*
@@ -85,4 +86,7 @@ function collectWords(words) {
     }
   }
 }
-
+function finnishOneResourceBlock(blocks) {
+  console.log('finnishOneResourceBlock blocks=<',blocks,'>');
+  console.log('finnishOneResourceBlock oneBlockWors=<',oneBlockWors,'>');
+}
