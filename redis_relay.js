@@ -81,6 +81,7 @@ function collectWords(words) {
     let word = keys[0];
     if(oneBlockWors[word]) {
       oneBlockWors[word] += wordRank[word];
+      console.log('collectWords oneBlockWors[word]=<',oneBlockWors[word],'>');
     } else {
       oneBlockWors[word] = wordRank[word];
     }
