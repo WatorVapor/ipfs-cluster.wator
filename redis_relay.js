@@ -40,6 +40,8 @@ subRedis.on("message", function(channel, msg) {
     //console.log('subRedis.on jsonMsg=<',jsonMsg,'>');
     if(jsonMsg.word) {
       collectWords(jsonMsg.word);
+    } else {
+      console.log('subRedis.on jsonMsg=<',jsonMsg,'>');
     }
   }
   /*
