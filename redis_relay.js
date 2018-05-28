@@ -68,6 +68,10 @@ ipfs.pubsub.subscribe(ipfsSubTopic, onRcvIpfsMsg,(err) => {
 });
 
 function collectWords(words) {
-  console.log('collectWords words=<',words,'>');
+  //console.log('collectWords words=<',words,'>');
+  for(let i = 0;i <words.length;i++) {
+    let word = words[i];
+    console.log('collectWords word=<',word,'>');
+  }
 }
 
