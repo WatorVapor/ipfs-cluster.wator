@@ -67,11 +67,18 @@ ipfs.pubsub.subscribe(ipfsSubTopic, onRcvIpfsMsg,(err) => {
   console.log('subscribe ipfsSubTopic=<',ipfsSubTopic,'>');
 });
 
+let oneBlockWors = {};
 function collectWords(words) {
   //console.log('collectWords words=<',words,'>');
-  for(let i = 0;i <words.length;i++) {
-    let word = words[i];
+  let keys = Object.keys(words);
+  for(let i = 0;i <keys.length;i++) {
+    let word = keys[i];
     console.log('collectWords word=<',word,'>');
+    if(oneBlockWors[word]) {
+      oneBlockWors[word] += words[word];
+    } else {
+      oneBlockWors[word] = words[word];
+    }
   }
 }
 
