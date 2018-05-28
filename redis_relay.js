@@ -37,7 +37,10 @@ subRedis.on("message", function(channel, msg) {
   //console.log('subRedis.on msg=<',msg,'>');
   let jsonMsg = JSON.parse(msg);
   if(jsonMsg) {
-    console.log('subRedis.on jsonMsg=<',jsonMsg,'>');
+    //console.log('subRedis.on jsonMsg=<',jsonMsg,'>');
+    if(jsonMsg.word) {
+      collectWords(jsonMsg.word);
+    }
   }
   /*
   const msgBuff = Buffer.from(msg);
@@ -64,4 +67,7 @@ ipfs.pubsub.subscribe(ipfsSubTopic, onRcvIpfsMsg,(err) => {
   console.log('subscribe ipfsSubTopic=<',ipfsSubTopic,'>');
 });
 
+function collectWords(words) {
+  console.log('collectWords words=<',words,'>');
+}
 
