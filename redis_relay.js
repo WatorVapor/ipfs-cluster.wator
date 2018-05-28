@@ -80,9 +80,9 @@ function collectWords(words) {
     console.log('collectWords keys=<',keys,'>');
     let word = keys[0];
     if(oneBlockWors[word]) {
-      oneBlockWors[word] += words[word];
+      oneBlockWors[word] += wordRank[word];
     } else {
-      oneBlockWors[word] = words[word];
+      oneBlockWors[word] = wordRank[word];
     }
   }
 }
