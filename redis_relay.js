@@ -75,9 +75,9 @@ function collectWords(words) {
   //console.log('collectWords words=<',words,'>');
   for(let i = 0;i < words.length ; i++) {
     let wordRank = words[i];
-    console.log('collectWords wordRank=<',wordRank,'>');
+    //console.log('collectWords wordRank=<',wordRank,'>');
     let keys = Object.keys(wordRank);
-    console.log('collectWords keys=<',keys,'>');
+    //console.log('collectWords keys=<',keys,'>');
     let word = keys[0];
     if(oneBlockWors[word]) {
       oneBlockWors[word] += wordRank[word];
