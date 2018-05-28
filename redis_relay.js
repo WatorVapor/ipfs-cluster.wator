@@ -33,10 +33,16 @@ const ipfsPubTopic = 'wai-ipfs-task-switch-finnished';
 
 
 subRedis.on("message", function(channel, msg) {
-  console.log('subRedis.on channel=<',channel,'>');
-  console.log('subRedis.on msg=<',msg,'>');
+  //console.log('subRedis.on channel=<',channel,'>');
+  //console.log('subRedis.on msg=<',msg,'>');
+  let jsonMsg = JSON.parse(msg);
+  if(jsonMsg) {
+    console.log('subRedis.on jsonMsg=<',jsonMsg,'>');
+  }
+  /*
   const msgBuff = Buffer.from(msg);
   ipfs.pubsub.publish(ipfsPubTopic,msgBuff);
+  */
 });
 
 
