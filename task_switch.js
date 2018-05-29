@@ -27,6 +27,14 @@ ipfs.pubsub.subscribe(watchTopic, receiveMsg,(err) => {
   console.log('subscribe watchTopic=<',watchTopic,'>');
 });
 
+ipfs.pubsub.peers(watchTopic, (err, peerIds) => {
+  if (err) {
+    return console.error(`failed to get peers subscribed to ${topic}`, err)
+  }
+  console.log(peerIds)
+})
+
+
 const broadcastTopic = 'wai-ipfs-task-switch-created';
 
 
