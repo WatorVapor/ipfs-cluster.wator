@@ -18,4 +18,5 @@ if [ -n "$IPFS_API_HOST" ]; then
 fi
 
 pwd
+find ./
 node ./ipfs.node.js
