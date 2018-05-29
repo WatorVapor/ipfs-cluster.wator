@@ -17,6 +17,6 @@ if [ -n "$IPFS_API_HOST" ]; then
   sed -i.bak "s/127.0.0.1/$IPFS_API_HOST/g" $IPFS_PATH/config
 fi
 
-pwd
-find ./src
+#pwd
+#find ./src
 node ./ipfs.node.js
