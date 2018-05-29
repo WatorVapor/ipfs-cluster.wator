@@ -1,3 +1,5 @@
-const ipfsAPI = require('ipfs-api');
-const ipfs = ipfsAPI('/ip4/127.0.0.1/tcp/5002');
-console.log('ipfs=<',ipfs,'>');
+const node = new IPFS({});
+node.on('error', error => {
+  console.error(error.message)
+});
+console.log('node=<',node,'>');
