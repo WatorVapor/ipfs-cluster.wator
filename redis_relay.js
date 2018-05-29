@@ -70,6 +70,15 @@ ipfs.pubsub.subscribe(ipfsSubTopic, onRcvIpfsMsg,(err) => {
   console.log('subscribe ipfsSubTopic=<',ipfsSubTopic,'>');
 });
 
+ipfs.pubsub.peers(ipfsSubTopic, (err, peerIds) => {
+  if (err) {
+    return console.error(`failed to get peers subscribed to ${ipfsSubTopic}`, err)
+  }
+  console.log(peerIds)
+})
+
+
+
 let oneBlockWors = {};
 function collectWords(words) {
   //console.log('collectWords words=<',words,'>');
