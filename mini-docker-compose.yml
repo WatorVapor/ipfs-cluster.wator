@@ -4,6 +4,9 @@ services:
     image: ipfs/js-ipfs
     volumes:
       - ./storage-ipfs:/root/.jsipfs
+      - ./:/wc
+    working_dir: "/wc"
+    command: ./new-init-and-daemon.sh
     networks:
       - outside
     deploy:
