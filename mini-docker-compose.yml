@@ -1,0 +1,65 @@
+version: '3'
+services:
+  ipfs-dameon:
+    image: ipfs/js-ipfs
+    volumes:
+      - ./storage-ipfs:/root/.jsipfs
+    networks:
+      - outside
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: 2G
+        reservations:
+          cpus: '1.00'
+          memory: 512M
+  ipfs-nginx:
+    image: nginx
+    networks:
+      - outside
+    volumes:
+      - /watorvapor/cert:/etc/cert
+      - ./conf-nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./conf-nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    deploy:
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 32M
+        reservations:
+          cpus: '0.2'
+          memory: 16M
+  ipfs-relay-redis:
+    image: redis
+    networks:
+      - outside
+    deploy:
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 32M
+        reservations:
+          cpus: '0.2'
+          memory: 16M
+  ipfs-ws-storage:
+    image: node:slim
+    networks:
+      - outside
+    volumes:
+      - ./:/opt/wc
+    working_dir: "/opt/wc"
+    command: node ./ws_storage.js
+    deploy:
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 32M
+        reservations:
+          cpus: '0.2'
+          memory: 16M
+networks:
+  outside:
+    external:
+      name: "host"
+
