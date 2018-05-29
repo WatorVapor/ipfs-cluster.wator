@@ -4,9 +4,6 @@ services:
     image: ipfs/js-ipfs
     volumes:
       - ./storage-ipfs:/root/.jsipfs
-      - ./new-init-and-daemon.sh:/usr/src/app/new-init-and-daemon.sh
-      - ./ipfs.node.js:/usr/src/app/ipfs.node.js
-    command: ./new-init-and-daemon.sh
     networks:
       - outside
     deploy:
