@@ -1,7 +1,7 @@
 version: '3'
 services:
   ipfs-dameon:
-    image: ipfs/js-ipfs
+    image: ipfs/js-ipfs:v0.29.0
     volumes:
       - ./storage-ipfs:/root/.jsipfs
     networks:
