@@ -1,0 +1,21 @@
+version: '3'
+services:
+  ipfs-dameon:
+    image: ipfs/js-ipfs:v0.29.0
+    volumes:
+      - ./storage-ipfs:/root/.jsipfs
+    networks:
+      - outside
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: 2G
+        reservations:
+          cpus: '1.00'
+          memory: 512M
+networks:
+  outside:
+    external:
+      name: "host"
+
