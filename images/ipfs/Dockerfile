@@ -14,3 +14,5 @@ RUN apt-get update \
     && apt-get install --yes $BUILD_DEPS \
     && npm install ipfs --production \
     && npm cache clear --force
+
+CMD ./init-and-daemon.sh
