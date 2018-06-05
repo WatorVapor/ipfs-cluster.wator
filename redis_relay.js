@@ -98,9 +98,9 @@ function collectWords(words) {
 }
 function finnishOneResourceBlock(blocks) {
   console.log('finnishOneResourceBlock blocks=<',blocks,'>');
-  console.log('finnishOneResourceBlock oneBlockWords=<',oneBlockWords,'>');
+  //console.log('finnishOneResourceBlock oneBlockWords=<',oneBlockWords,'>');
   let oneBlockWordsStr = JSON.stringify(oneBlockWords);
-  console.log('finnishOneResourceBlock oneBlockWordsStr=<',oneBlockWordsStr,'>');
+  //console.log('finnishOneResourceBlock oneBlockWordsStr=<',oneBlockWordsStr,'>');
   const msgBuff = Buffer.from(oneBlockWordsStr);
   ipfs.add(msgBuff, function (err, files) {
     console.log('finnishOneResourceBlock files=<',files,'>');
