@@ -92,7 +92,7 @@ function collectWords(words) {
       oneBlockWords[word] += wordRank[word];
       //console.log('collectWords oneBlockWors[word]=<',oneBlockWors[word],'>');
     } else {
-      oneBlockWors[word] = wordRank[word];
+      oneBlockWords[word] = wordRank[word];
     }
   }
 }
