@@ -1,16 +1,16 @@
 version: '3'
 services:
   ipfs-dameon:
-    image: ipfs/js-ipfs:v0.29.0
+    image: watorvapor/js-ipfs
     volumes:
-      - ./storage-ipfs:/root/.jsipfs
+      - ./storage-ipfs:/data/ipfs
     networks:
       - outside
     deploy:
       resources:
         limits:
           cpus: '2.00'
-          memory: 2G
+          memory: 1G
         reservations:
           cpus: '1.00'
           memory: 512M
