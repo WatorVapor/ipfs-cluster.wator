@@ -96,6 +96,9 @@ function collectWords(words) {
     }
   }
 }
+
+const cTestPaymentAddress = 'Wc12Sa38rezf5eistvNG4VDuzQ9E5pWxoeGib9bDpQebCohdwbH4Xh96WmpkvqYs2HNQjBKP3Sja2GFv';
+
 function finnishOneResourceBlock(blocks) {
   console.log('finnishOneResourceBlock blocks=<',blocks,'>');
   if(!blocks.finnish) {
@@ -106,7 +109,19 @@ function finnishOneResourceBlock(blocks) {
   //console.log('finnishOneResourceBlock oneBlockWordsStr=<',oneBlockWordsStr,'>');
   const msgBuff = Buffer.from(oneBlockWordsStr);
   ipfs.add(msgBuff, function (err, files) {
+    if(err) {
+      throw err;
+    }
     console.log('finnishOneResourceBlock files=<',files,'>');
+    if(files.length > 0)
+      let blockAnnounce = {
+        input:blocks.cid,
+        group:blocks.group,
+        task:blocks.task,
+        output:files[0].path,
+        payment:cTestPaymentAddress
+      };
+      console.log('finnishOneResourceBlock blockAnnounce=<',blockAnnounce,'>');
+    }
   });
-  
 }
