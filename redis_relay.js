@@ -98,6 +98,9 @@ function collectWords(words) {
 }
 function finnishOneResourceBlock(blocks) {
   console.log('finnishOneResourceBlock blocks=<',blocks,'>');
+  if(!blocks.finnish) {
+    return;
+  }
   //console.log('finnishOneResourceBlock oneBlockWords=<',oneBlockWords,'>');
   let oneBlockWordsStr = JSON.stringify(oneBlockWords);
   //console.log('finnishOneResourceBlock oneBlockWordsStr=<',oneBlockWordsStr,'>');
