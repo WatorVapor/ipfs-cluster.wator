@@ -79,7 +79,7 @@ ipfs.pubsub.peers(ipfsSubTopic, (err, peerIds) => {
 
 
 
-let oneBlockWors = {};
+let oneBlockWords = {};
 function collectWords(words) {
   //console.log('collectWords words=<',words,'>');
   for(let i = 0;i < words.length ; i++) {
@@ -88,8 +88,8 @@ function collectWords(words) {
     let keys = Object.keys(wordRank);
     //console.log('collectWords keys=<',keys,'>');
     let word = keys[0];
-    if(oneBlockWors[word]) {
-      oneBlockWors[word] += wordRank[word];
+    if(oneBlockWords[word]) {
+      oneBlockWords[word] += wordRank[word];
       //console.log('collectWords oneBlockWors[word]=<',oneBlockWors[word],'>');
     } else {
       oneBlockWors[word] = wordRank[word];
@@ -98,5 +98,12 @@ function collectWords(words) {
 }
 function finnishOneResourceBlock(blocks) {
   console.log('finnishOneResourceBlock blocks=<',blocks,'>');
-  console.log('finnishOneResourceBlock oneBlockWors=<',oneBlockWors,'>');
+  console.log('finnishOneResourceBlock oneBlockWords=<',oneBlockWords,'>');
+  let oneBlockWordsStr = JSON.stringify(oneBlockWords);
+  console.log('finnishOneResourceBlock oneBlockWordsStr=<',oneBlockWordsStr,'>');
+  const msgBuff = Buffer.from(oneBlockWordsStr);
+  ipfs.add(msgBuff, function (err, files) {
+    console.log('finnishOneResourceBlock files=<',files,'>');
+  });
+  
 }
