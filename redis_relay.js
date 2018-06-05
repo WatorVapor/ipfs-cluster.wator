@@ -113,7 +113,7 @@ function finnishOneResourceBlock(blocks) {
       throw err;
     }
     console.log('finnishOneResourceBlock files=<',files,'>');
-    if(files.length > 0)
+    if(files.length > 0) {
       let blockAnnounce = {
         input:blocks.cid,
         group:blocks.group,
