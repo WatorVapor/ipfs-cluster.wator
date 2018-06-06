@@ -140,3 +140,14 @@ stream.on('data', function (data) {
   stream.pause();
 });
 
+stream.on('error', function (err) {
+  console.log('Oh my!', err);
+});
+stream.on('close', function () {
+  console.log('Stream closed');
+});
+stream.on('end', function () {
+  console.log('Stream ended');
+  writeBlock();
+});
+
