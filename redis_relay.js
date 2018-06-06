@@ -125,3 +125,9 @@ function finnishOneResourceBlock(blocks) {
     }
   });
 }
+
+const dbBlockPathTodo = '/watorvapor/wai.storage/crystal.wator/cnwiki/todo/block';
+const dbBlockPathDone = '/watorvapor/wai.storage/crystal.wator/cnwiki/done/block';
+const level = require('level');
+
+
