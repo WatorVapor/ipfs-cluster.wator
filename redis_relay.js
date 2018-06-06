@@ -97,7 +97,10 @@ function collectWords(words) {
   }
 }
 
+const crystal = require('crystal.wator.json');
+console.log('crystal=<',crystal,'>');
 const cTestPaymentAddress = 'Wc12Sa38rezf5eistvNG4VDuzQ9E5pWxoeGib9bDpQebCohdwbH4Xh96WmpkvqYs2HNQjBKP3Sja2GFv';
+
 
 function finnishOneResourceBlock(blocks) {
   console.log('finnishOneResourceBlock blocks=<',blocks,'>');
