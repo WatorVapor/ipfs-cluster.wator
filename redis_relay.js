@@ -126,6 +126,7 @@ function finnishOneResourceBlock(blocks) {
         payment:cTestPaymentAddress
       };
       console.log('finnishOneResourceBlock blockAnnounce=<',blockAnnounce,'>');
+      saveDoneDB(blockAnnounce);
     }
   });
 }
@@ -168,4 +169,9 @@ stream.on('end', function () {
   console.log('Stream ended');
   writeBlock();
 });
+
+function saveDoneDB(result) {
+  console.log('saveDoneDB result=<',result,'>');
+  dbDone.set(result.input,JSON.stringify(result));
+}
 
