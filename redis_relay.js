@@ -136,7 +136,10 @@ const level = require('level');
 let dbTodo = level(dbBlockPathTodo);
 let dbDone = level(dbBlockPathDone);
 let stream = dbTodo.createReadStream();
+console.log('stream=<',stream,'>');
 stream.on('data', function (data) {
+  console.log('data.key=<',data.key.toString('utf-8'),'>');
+  console.log('data.value=<',data.value.toString('utf-8'),'>');
   stream.pause();
 });
 
