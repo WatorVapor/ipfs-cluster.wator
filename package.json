@@ -373,6 +373,7 @@
       "resolved": "https://registry.npmjs.org/keypair/-/keypair-1.0.1.tgz",
       "version": "1.0.1"
     },
+    "level": "^4.0.0",
     "libp2p-crypto": {
       "integrity": "sha512-1/z8rxZ0DcQNreZhEsl7PnLr7DWOioSvYbKBLGkRwNRiNh1JJLgh0PdTySBb44wkrOGT+TxcGRd7iq3/X6Wxwg==",
       "requires": {
