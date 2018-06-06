@@ -172,6 +172,6 @@ stream.on('end', function () {
 
 function saveDoneDB(result) {
   console.log('saveDoneDB result=<',result,'>');
-  dbDone.set(result.input,JSON.stringify(result));
+  dbDone.put(result.input,JSON.stringify(result));
 }
 
