@@ -133,5 +133,10 @@ function finnishOneResourceBlock(blocks) {
 const dbBlockPathTodo = '/watorvapor/wai.storage/crystal.wator/cnwiki/todo/block';
 const dbBlockPathDone = '/watorvapor/wai.storage/crystal.wator/cnwiki/done/block';
 const level = require('level');
-
+let dbTodo = level(dbBlockPathTodo);
+let dbDone = level(dbBlockPathDone);
+stream = dbTodo.createReadStream();
+stream.on('data', function (data) {
+  stream.pause();
+});
 
