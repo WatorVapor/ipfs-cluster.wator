@@ -143,11 +143,16 @@ stream.on('data', function (data) {
   stream.pause();
   let blockCid = data.key.toString('utf-8');
   dbDone.get(blockCid, function (err, value) {
-    if (err && err.notFound) {
-      console.log('blockCid=<',blockCid,'>');
-      let taskJson = {block:blockCid,task:'wator.ipfs.ostrich.app'};
-      pubRedis.publish(redisPubChannel,JSON.stringify(taskJson));      
+    if (err) {
+      if (err.notFound) {
+        console.log('blockCid=<',blockCid,'>');
+        let taskJson = {block:blockCid,task:'wator.ipfs.ostrich.app'};
+        pubRedis.publish(redisPubChannel,JSON.stringify(taskJson));
+      } else {
+        throw err;
+      }
     } else {
+      console.log('value=<',value,'>');
       stream.resume();
     }
   });
