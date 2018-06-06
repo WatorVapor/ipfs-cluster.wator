@@ -142,6 +142,7 @@ stream.on('data', function (data) {
   //console.log('data.value=<',data.value.toString('utf-8'),'>');
   let blockCid = data.key.toString('utf-8');
   console.log('blockCid=<',blockCid,'>');
+  let broadcastTask = {block:blockCid,task:'wator.ipfs.ostrich.app'};
   stream.pause();
 });
 
