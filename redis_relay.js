@@ -9,7 +9,7 @@ ipfs.id( (err, identity) => {
     throw err;
     process.exit();
   }
-  console.log('identity=<',identity,'>');
+  //console.log('identity=<',identity,'>');
 });
 
 
