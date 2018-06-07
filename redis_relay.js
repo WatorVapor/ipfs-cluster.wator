@@ -178,4 +178,6 @@ function saveDoneDB(result) {
 
 function publishResult(blockResult) {
   console.log('publishResult blockResult=<',blockResult,'>');
+  let outputCID = blockResult.output;
+  let publish = blockResult;
 }
