@@ -172,7 +172,7 @@ stream.on('end', function () {
 });
 
 function saveDoneDB(result) {
-  console.log('saveDoneDB result=<',result,'>');
+  //console.log('saveDoneDB result=<',result,'>');
   dbDone.put(result.input,JSON.stringify(result));
 }
 
@@ -180,4 +180,6 @@ function publishResult(blockResult) {
   console.log('publishResult blockResult=<',blockResult,'>');
   let outputCID = blockResult.output;
   let publish = blockResult;
+  delete publish.output;
+  console.log('publishResult outputCID=<',outputCID,'>');
 }
