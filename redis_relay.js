@@ -182,3 +182,16 @@ function publishResult(blockResult) {
   console.log('publishResult outputCID=<',outputCID,'>');
   console.log('publishResult blockResult=<',blockResult,'>');
 }
+
+
+const SHA3  = require('sha3');
+const fs = require('fs');
+const crypto = require('crypto');
+
+const EC = require('elliptic').ec;
+const ec = new EC('p521');
+//console.log('ec=<',ec,'>');
+const bs58 = require('bs58')
+
+
+
