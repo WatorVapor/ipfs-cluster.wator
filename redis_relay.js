@@ -179,9 +179,6 @@ function saveDoneDB(result) {
 function publishResult(blockResult) {
   console.log('publishResult blockResult=<',blockResult,'>');
   let outputCID = blockResult.output;
-  let publishJson = Object.assign({},blockResult);
-  delete publishJson.output;
   console.log('publishResult outputCID=<',outputCID,'>');
-  console.log('publishResult publishJson=<',publishJson,'>');
   console.log('publishResult blockResult=<',blockResult,'>');
 }
