@@ -13,6 +13,7 @@ ENV BUILD_DEPS='libnspr4 libnspr4-dev libnss3'
 RUN apt-get update \
     && apt-get install --yes $BUILD_DEPS \
     && npm install ipfs --production \
+    && npm install wrtc --production \
     && npm cache clear --force
 
 CMD ./init-and-daemon.sh
