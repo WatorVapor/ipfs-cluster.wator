@@ -1,0 +1,3 @@
+docker manifest create watorvapor/js-starbian watorvapor/js-starbian-amd64
+docker manifest annotate watorvapor/js-starbian watorvapor/js-ipfs-amd64-2 --os linux --arch amd64
+docker manifest push watorvapor/js-starbian
