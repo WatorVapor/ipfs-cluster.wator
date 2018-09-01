@@ -1,18 +1,9 @@
-FROM ubuntu:bionic
+FROM node:8.11
 
-ENV USER wator
-ENV HOME /home/${USER}
-ENV SHELL /bin/bash
-
-
+WORKDIR /usr/src/app
+ENV BUILD_DEPS='libnspr4 libnspr4-dev libnss3'
 RUN apt-get update \
-    && apt-get install --yes $BUILD_DEPS \
-    && apt-get install -y curl sudo
+    && apt-get install --yes $BUILD_DEPS 
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-RUN apt-get install -y nodejs
-
-RUN npm install -g npm@latest
-RUN apt-get install -y git
-RUN npm install starbian \
-    && npm cache clear --force
+RUN npm install starbian   
+RUN npm cache clear --force
