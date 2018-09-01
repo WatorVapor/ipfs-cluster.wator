@@ -7,6 +7,7 @@ RUN apt-get install -y nodejs \
     && apt-get install -y build-essential 
 RUN nodejs -v
 RUN apt-get install -y npm
-RUN npm install -g npm@latest \
-    && npm install -g starbian \
+RUN npm install -g npm@latest
+RUN apt-get install -y git
+RUN npm install -g starbian \
     && npm cache clear --force
